@@ -28,7 +28,8 @@ public class ClubhouseAPIController {
     private static final String TAG = "ClubhouseAPI";
     private static final boolean DEBUG = BuildConfig.DEBUG;
 
-    private static final Uri API_URL = Uri.parse("https://www.clubhouseapi.com/api");
+    // تم وضع رابط سيرفرك هنا فقط دون المساس بأي كود آخر
+    private static final Uri API_URL = Uri.parse("https://game-server-ayham.onrender.com/api");
     //	private static final Uri API_URL=Uri.parse("http://192.168.0.51:8080/");
     private static final String API_BUILD_ID = "304";
     private static final String API_BUILD_VERSION = "0.1.28";
@@ -139,7 +140,6 @@ public class ClubhouseAPIController {
                         String respStr = body.string();
                         if (DEBUG)
                             Log.i(TAG, "Raw response: " + respStr);
-//						T robj=gson.fromJson(body.charStream(), req.responseClass);
                         T robj = req.parse(respStr);
                         if (DEBUG)
                             Log.i(TAG, "Parsed response: " + robj);
