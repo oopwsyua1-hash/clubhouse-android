@@ -5,27 +5,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04  # استخدام نظام متوافق مع البيئات القديمة
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
     - name: Set up JDK 11
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v2
       with:
         distribution: 'zulu'
         java-version: '11'
-        cache: gradle
 
     - name: Grant Execute Permission for Gradlew
       run: chmod +x gradlew
 
-    - name: Build APK
-      run: ./gradlew assembleDebug
+    - name: Build with Gradle
+      run: ./gradlew assembleDebug --no-daemon
 
     - name: Upload APK
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: Clubhouse-Sabaa-APK
-        path: app/build/outputs/apk/debug/*.apk
+        path: Houseclub/build/outputs/apk/debug/*.apk
