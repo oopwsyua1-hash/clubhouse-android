@@ -5,16 +5,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04  # استخدام نظام متوافق مع البيئات القديمة
+    runs-on: ubuntu-22.04  # تحديد إصدار خادم محدد ومستقر لتفادي طابور الانتظار العشوائي
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up JDK 11
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v3
       with:
-        distribution: 'zulu'
+        distribution: 'temurin'
         java-version: '11'
 
     - name: Grant Execute Permission for Gradlew
@@ -24,7 +24,7 @@ jobs:
       run: ./gradlew assembleDebug --no-daemon
 
     - name: Upload APK
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Clubhouse-Sabaa-APK
         path: Houseclub/build/outputs/apk/debug/*.apk
